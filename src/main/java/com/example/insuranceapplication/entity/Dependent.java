@@ -7,9 +7,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Inheritance
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
 @Table(name = "dependent")
 public class Dependent extends Person {
@@ -68,6 +71,14 @@ public class Dependent extends Person {
 
     @Column(name = "date_of_last_d4910")
     private LocalDate dateOfLastD4910;
+    
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+    
+    @ManyToOne
+    @JoinColumn(name = "subscriber_id")
+    private Subscriber subscriber;
 	
 	public Dependent() {
 		super();

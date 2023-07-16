@@ -1,12 +1,17 @@
 package com.example.insuranceapplication.entity;
 
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +24,7 @@ public class Plan {
     private int id;
     
     @Column(name = "insurance_company")
-    private int insuranceCompany;
+    private int insuranceCompanyId;
 
     @Column(name = "group_number")
     private String groupNumber;
@@ -218,12 +223,19 @@ public class Plan {
 
     @Column(name = "d4342_frequency")
     private String d4342Frequency;
+    
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+    private List<Subscriber> subscribers;
+    
+    @ManyToOne
+    @JoinColumn(name = "insurance_company_id")
+    private InsuranceCompany insuranceCompany;
 	
 	public Plan() {
 		
 	}
 
-	public Plan(int id, int insuranceCompany, String groupNumber, String groupName, double annualMaximum, double individualDeductible,
+	public Plan(int id, int insuranceCompanyId, String groupNumber, String groupName, double annualMaximum, double individualDeductible,
 	        double familyDeductible, char deductibleAppliesToPreventive, char deductibleAppliesToBasic,
 	        char deductibleAppliesToMajor, String orthoMaximumCoverage, int orthoAgeLimit,
 	        int preventiveCoveragePercentage, int basicCoveragePercentage, int majorCoveragePercentage,
@@ -246,7 +258,7 @@ public class Plan {
 	        char missingToothClause, int waitingPeriodPreventiveMonths, int waitingPeriodBasicMonths,
 	        int waitingPeriodMajorMonths, String d4341Frequency, String d4342Frequency) {
 	    setId(id);
-	    setInsuranceCompany(insuranceCompany);
+	    setInsuranceCompanyId(insuranceCompanyId);
 	    setGroupNumber(groupNumber);
 	    setGroupName(groupName);
 	    setAnnualMaximum(annualMaximum);
@@ -323,12 +335,12 @@ public class Plan {
 		this.id = id;
 	}
 
-	public int getInsuranceCompany() {
-		return insuranceCompany;
+	public int getInsuranceCompanyId() {
+		return insuranceCompanyId;
 	}
 
-	public void setInsuranceCompany(int insuranceCompany) {
-		this.insuranceCompany = insuranceCompany;
+	public void setInsuranceCompanyId(int insuranceCompanyId) {
+		this.insuranceCompanyId = insuranceCompanyId;
 	}
 
 	public String getGroupNumber() {
@@ -871,7 +883,7 @@ public class Plan {
 				d9944CoverageForBruxismOnly, d9944CoveragePercentage, d9944Frequency, deductibleAppliesToBasic,
 				deductibleAppliesToMajor, deductibleAppliesToPreventive, endoBasicOrMajor, extractionCoveragePercentage,
 				familyDeductible, fixedProstheticFrequency, groupName, groupNumber, id, implantsCoveragePercentage,
-				individualDeductible, insuranceCompany, majorCoveragePercentage, missingToothClause, orthoAgeLimit,
+				individualDeductible, insuranceCompanyId, majorCoveragePercentage, missingToothClause, orthoAgeLimit,
 				orthoMaximumCoverage, perioBasicOrMajor, posteriorCompositesDowngraded, preventiveCoveragePercentage,
 				removableProstheticFrequency, sealantsCoveragePercentage, sealantsCoveragePermanentFirstMolars,
 				sealantsCoveragePermanentIncisors, sealantsCoveragePermanentPremolars,
@@ -931,7 +943,7 @@ public class Plan {
 				&& Objects.equals(groupName, other.groupName) && Objects.equals(groupNumber, other.groupNumber)
 				&& id == other.id && implantsCoveragePercentage == other.implantsCoveragePercentage
 				&& Double.doubleToLongBits(individualDeductible) == Double.doubleToLongBits(other.individualDeductible)
-				&& insuranceCompany == other.insuranceCompany
+				&& insuranceCompanyId == other.insuranceCompanyId
 				&& majorCoveragePercentage == other.majorCoveragePercentage
 				&& missingToothClause == other.missingToothClause && orthoAgeLimit == other.orthoAgeLimit
 				&& Objects.equals(orthoMaximumCoverage, other.orthoMaximumCoverage)
@@ -957,7 +969,7 @@ public class Plan {
 
 	@Override
 	public String toString() {
-		return "Plan [id=" + id + ", insuranceCompany=" + insuranceCompany + ", groupNumber=" + groupNumber
+		return "Plan [id=" + id + ", insuranceCompany=" + insuranceCompanyId + ", groupNumber=" + groupNumber
 				+ ", groupName=" + groupName + ", annualMaximum=" + annualMaximum + ", individualDeductible="
 				+ individualDeductible + ", familyDeductible=" + familyDeductible + ", deductibleAppliesToPreventive="
 				+ deductibleAppliesToPreventive + ", deductibleAppliesToBasic=" + deductibleAppliesToBasic

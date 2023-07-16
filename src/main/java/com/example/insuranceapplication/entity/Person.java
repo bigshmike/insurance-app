@@ -1,11 +1,15 @@
 package com.example.insuranceapplication.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,6 +34,12 @@ public class Person {
 
     @Column(name = "gender")
     private String gender;
+    
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    private Subscriber subscriber;
+    
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Dependent> dependents;
 	
 	public Person() {
 		
