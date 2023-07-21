@@ -5,8 +5,9 @@ import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
@@ -14,12 +15,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
 @Table(name = "subscriber")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "subscriber_type", discriminatorType = DiscriminatorType.STRING)
 public class Subscriber extends Person {
 
-    @Id
     @Column(name = "subscriber_id")
     private int subscriberId;
 
