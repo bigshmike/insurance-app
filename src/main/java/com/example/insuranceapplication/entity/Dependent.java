@@ -6,13 +6,10 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "dependent")
 public class Dependent extends Person {
