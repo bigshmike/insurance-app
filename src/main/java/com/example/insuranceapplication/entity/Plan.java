@@ -26,181 +26,181 @@ public class Plan {
     @Column(name = "insurance_company")
     private int insuranceCompanyId;
 
-    @Column(name = "group_number")
+    @Column(name = "group_number") //
     private String groupNumber;
 
-    @Column(name = "group_name")
+    @Column(name = "group_name") //
     private String groupName;
 
-    @Column(name = "annual_maximum")
+    @Column(name = "annual_maximum") //
     private double annualMaximum;
 
-    @Column(name = "individual_deductible")
+    @Column(name = "individual_deductible") //
     private double individualDeductible;
 
-    @Column(name = "family_deductible")
+    @Column(name = "family_deductible") //
     private double familyDeductible;
 
-    @Column(name = "deductible_applies_to_preventive")
+    @Column(name = "deductible_applies_to_preventive") //
     private char deductibleAppliesToPreventive;
 
-    @Column(name = "deductible_applies_to_basic")
+    @Column(name = "deductible_applies_to_basic") //
     private char deductibleAppliesToBasic;
 
-    @Column(name = "deductible_applies_to_major")
+    @Column(name = "deductible_applies_to_major") //
     private char deductibleAppliesToMajor;
 
-    @Column(name = "ortho_maximum_coverage")
+    @Column(name = "ortho_maximum_coverage") //
     private String orthoMaximumCoverage;
 
-    @Column(name = "ortho_age_limit")
+    @Column(name = "ortho_age_limit") //
     private int orthoAgeLimit;
 
-    @Column(name = "preventive_coverage_percentage")
-    private int preventiveCoveragePercentage;
+    @Column(name = "preventive_coverage_percentage") //
+    private Integer preventiveCoveragePercentage;
 
-    @Column(name = "basic_coverage_percentage")
+    @Column(name = "basic_coverage_percentage") //
     private int basicCoveragePercentage;
 
-    @Column(name = "major_coverage_percentage")
+    @Column(name = "major_coverage_percentage") //
     private int majorCoveragePercentage;
 
-    @Column(name = "extraction_coverage_percentage")
+    @Column(name = "extraction_coverage_percentage") //
     private int extractionCoveragePercentage;
 
-    @Column(name = "crowns_basic_or_major")
+    @Column(name = "crowns_basic_or_major") //
     private char crownsBasicOrMajor;
 
-    @Column(name = "perio_basic_or_major")
+    @Column(name = "perio_basic_or_major") //
     private char perioBasicOrMajor;
 
-    @Column(name = "endo_basic_or_major")
+    @Column(name = "endo_basic_or_major") //
     private char endoBasicOrMajor;
 
-    @Column(name = "d0220_basic_or_preventive")
+    @Column(name = "d0220_basic_or_preventive") //
     private char d0220BasicOrPreventive;
 
-    @Column(name = "d9110_basic_or_preventive")
+    @Column(name = "d9110_basic_or_preventive") // 
     private char d9110BasicOrPreventive;
 
-    @Column(name = "d4381_coverage_percentage")
+    @Column(name = "d4381_coverage_percentage") // 
     private int d4381CoveragePercentage;
 
-    @Column(name = "implants_coverage_percentage")
+    @Column(name = "implants_coverage_percentage") // 
     private int implantsCoveragePercentage;
 
-    @Column(name = "d6058_coverage_percentage")
+    @Column(name = "d6058_coverage_percentage") // 
     private int d6058CoveragePercentage;
 
-    @Column(name = "d0366_coverage_percentage")
+    @Column(name = "d0366_coverage_percentage") //
     private int d0366CoveragePercentage;
 
-    @Column(name = "sealants_coverage_percentage")
+    @Column(name = "sealants_coverage_percentage") //
     private int sealantsCoveragePercentage;
 
-    @Column(name = "sealants_through_age")
+    @Column(name = "sealants_through_age") //
     private int sealantsThroughAge;
 
-    @Column(name = "sealants_frequency")
+    @Column(name = "sealants_frequency") //
     private String sealantsFrequency;
 
-    @Column(name = "sealants_coverage_primary_incisors")
+    @Column(name = "sealants_coverage_primary_incisors") //
     private char sealantsCoveragePrimaryIncisors;
 
-    @Column(name = "sealants_coverage_primary_molars")
+    @Column(name = "sealants_coverage_primary_molars") // 
     private char sealantsCoveragePrimaryMolars;
 
-    @Column(name = "sealants_coverage_permanent_incisors")
+    @Column(name = "sealants_coverage_permanent_incisors") //
     private char sealantsCoveragePermanentIncisors;
 
-    @Column(name = "sealants_coverage_permanent_premolars")
+    @Column(name = "sealants_coverage_permanent_premolars") // 
     private char sealantsCoveragePermanentPremolars;
 
-    @Column(name = "sealants_coverage_permanent_first_molars")
+    @Column(name = "sealants_coverage_permanent_first_molars") // 
     private char sealantsCoveragePermanentFirstMolars;
 
-    @Column(name = "sealants_coverage_permanent_second_molars")
+    @Column(name = "sealants_coverage_permanent_second_molars") // 
     private char sealantsCoveragePermanentSecondMolars;
 
-    @Column(name = "sealants_coverage_permanent_third_molars")
+    @Column(name = "sealants_coverage_permanent_third_molars") //
     private char sealantsCoveragePermanentThirdMolars;
 
-    @Column(name = "d1206_coverage_percentage")
+    @Column(name = "d1206_coverage_percentage") //
     private int d1206CoveragePercentage;
 
-    @Column(name = "d1206_through_age")
+    @Column(name = "d1206_through_age") //
     private int d1206ThroughAge;
 
-    @Column(name = "d1206_frequency")
+    @Column(name = "d1206_frequency") //
     private String d1206Frequency;
 
-    @Column(name = "d7953_coverage_percentage")
+    @Column(name = "d7953_coverage_percentage") //
     private int d7953CoveragePercentage;
 
-    @Column(name = "d7953_coverage_with_implant_only")
+    @Column(name = "d7953_coverage_with_implant_only") //
     private char d7953CoverageWithImplantOnly;
 
-    @Column(name = "d9944_coverage_percentage")
+    @Column(name = "d9944_coverage_percentage") //
     private int d9944CoveragePercentage;
 
-    @Column(name = "d9944_frequency")
+    @Column(name = "d9944_frequency") //
     private String d9944Frequency;
 
-    @Column(name = "d9944_coverage_for_bruxism_only")
+    @Column(name = "d9944_coverage_for_bruxism_only") //
     private char d9944CoverageForBruxismOnly;
 
-    @Column(name = "posterior_composites_downgraded")
-    private char posteriorCompositesDowngraded;
+    @Column(name = "posterior_composites_downgraded") //
+    private char posteriorCompositesDowngraded; 
 
-    @Column(name = "d0210_frequency")
+    @Column(name = "d0210_frequency") //
     private String d0210Frequency;
 
-    @Column(name = "d0330_frequency")
+    @Column(name = "d0330_frequency") //
     private String d0330Frequency;
 
-    @Column(name = "d0210_d0330_frequency_shared")
+    @Column(name = "d0210_d0330_frequency_shared") //
     private char d0210D0330FrequencyShared;
 
-    @Column(name = "d0120_frequency")
+    @Column(name = "d0120_frequency") //
     private String d0120Frequency;
 
-    @Column(name = "d0140_frequency")
+    @Column(name = "d0140_frequency") //
     private String d0140Frequency;
 
-    @Column(name = "d0150_frequency")
+    @Column(name = "d0150_frequency") //
     private String d0150Frequency;
 
-    @Column(name = "d0180_frequency")
+    @Column(name = "d0180_frequency") //
     private String d0180Frequency;
 
-    @Column(name = "d0120_d0140_frequency_shared")
+    @Column(name = "d0120_d0140_frequency_shared") //
     private char d0120D0140FrequencyShared;
 
-    @Column(name = "d0150_d0140_frequency_shared")
+    @Column(name = "d0150_d0140_frequency_shared") //
     private char d0150D0140FrequencyShared;
 
-    @Column(name = "d0150_d0180_frequency_shared")
+    @Column(name = "d0150_d0180_frequency_shared") //
     private char d0150D0180FrequencyShared;
 
-    @Column(name = "d1110_frequency")
+    @Column(name = "d1110_frequency") //
     private String d1110Frequency;
 
-    @Column(name = "d1120_frequency")
+    @Column(name = "d1120_frequency") //
     private String d1120Frequency;
 
-    @Column(name = "d4910_frequency")
+    @Column(name = "d4910_frequency") //
     private String d4910Frequency;
 
-    @Column(name = "d1110_frequency_increased_diabetes")
+    @Column(name = "d1110_frequency_increased_diabetes") //
     private String d1110FrequencyIncreasedDiabetes;
 
-    @Column(name = "d1110_frequency_increased_pregnancy")
+    @Column(name = "d1110_frequency_increased_pregnancy") //
     private String d1110FrequencyIncreasedPregnancy;
 
-    @Column(name = "fixed_prosthetic_frequency")
+    @Column(name = "fixed_prosthetic_frequency") //
     private String fixedProstheticFrequency;
 
-    @Column(name = "removable_prosthetic_frequency")
+    @Column(name = "removable_prosthetic_frequency") //
     private String removableProstheticFrequency;
 
     @Column(name = "usual_customary_rates")
@@ -209,19 +209,19 @@ public class Plan {
     @Column(name = "missing_tooth_clause")
     private char missingToothClause;
 
-    @Column(name = "waiting_period_preventive_months")
+    @Column(name = "waiting_period_preventive_months") //
     private int waitingPeriodPreventiveMonths;
 
-    @Column(name = "waiting_period_basic_months")
+    @Column(name = "waiting_period_basic_months") //
     private int waitingPeriodBasicMonths;
 
-    @Column(name = "waiting_period_major_months")
+    @Column(name = "waiting_period_major_months") //
     private int waitingPeriodMajorMonths;
 
-    @Column(name = "d4341_frequency")
+    @Column(name = "d4341_frequency") //
     private String d4341Frequency;
 
-    @Column(name = "d4342_frequency")
+    @Column(name = "d4342_frequency") //
     private String d4342Frequency;
     
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
@@ -423,11 +423,11 @@ public class Plan {
 		this.orthoAgeLimit = orthoAgeLimit;
 	}
 
-	public int getPreventiveCoveragePercentage() {
+	public Integer getPreventiveCoveragePercentage() {
 		return preventiveCoveragePercentage;
 	}
 
-	public void setPreventiveCoveragePercentage(int preventiveCoveragePercentage) {
+	public void setPreventiveCoveragePercentage(Integer preventiveCoveragePercentage) {
 		this.preventiveCoveragePercentage = preventiveCoveragePercentage;
 	}
 
@@ -869,6 +869,22 @@ public class Plan {
 
 	public void setD4342Frequency(String d4342Frequency) {
 		this.d4342Frequency = d4342Frequency;
+	}
+
+	public List<Subscriber> getSubscribers() {
+		return subscribers;
+	}
+
+	public void setSubscribers(List<Subscriber> subscribers) {
+		this.subscribers = subscribers;
+	}
+
+	public InsuranceCompany getInsuranceCompany() {
+		return insuranceCompany;
+	}
+
+	public void setInsuranceCompany(InsuranceCompany insuranceCompany) {
+		this.insuranceCompany = insuranceCompany;
 	}
 
 	@Override

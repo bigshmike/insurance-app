@@ -6,15 +6,18 @@ import java.util.Objects;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "subscriber")
-public class Subscriber extends Person {
+@Table(name = "subscribers")
+public class Subscriber {
 
+	@Id
     @Column(name = "subscriber_id")
     private int subscriberId;
 
@@ -31,7 +34,7 @@ public class Subscriber extends Person {
     private int personId;
 
     @Column(name = "plan_id")
-    private int planId;
+    private Integer planId;
 
     @Column(name = "date_of_last_d0120")
     private LocalDate dateOfLastD0120;
@@ -72,12 +75,12 @@ public class Subscriber extends Person {
     @Column(name = "date_of_last_d4910")
     private LocalDate dateOfLastD4910;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id", insertable=false, updatable=false)
     private Person person;
     
     @ManyToOne
-    @JoinColumn(name = "plan_id")
+    @JoinColumn(name = "plan_id", insertable=false, updatable=false)
     private Plan plan;
 	
 	// default
@@ -94,29 +97,6 @@ public class Subscriber extends Person {
 		setTerminatedDate(terminatedDate);
 	}
 	
-	// constructor with call to super omitting personId and planId variables
-	public Subscriber(int ssn, String firstName, String lastName, LocalDate dob, char sex, String gender,
-	        int subscriberId, String email,
-	        LocalDate effectiveDate, LocalDate terminatedDate) {
-	    super(ssn, firstName, lastName, dob, sex, gender);
-		setSubscriberId(subscriberId);
-		setEmail(email);
-		setEffectiveDate(effectiveDate);
-		setTerminatedDate(terminatedDate);
-	}
-	
-	// constructor with call to super and includes personId and planId variables
-	public Subscriber(int ssn, String firstName, String lastName, LocalDate dob, char sex, String gender,
-	        int personId, int planId, int subscriberId, String email,
-	        LocalDate effectiveDate, LocalDate terminatedDate) {
-	    super(ssn, firstName, lastName, dob, sex, gender);
-	    setPersonId(personId);
-	    setPlanId(planId);
-		setSubscriberId(subscriberId);
-		setEmail(email);
-		setEffectiveDate(effectiveDate);
-		setTerminatedDate(terminatedDate);
-	}
 
 	public int getSubscriberId() {
 		return subscriberId;
@@ -158,11 +138,11 @@ public class Subscriber extends Person {
 		this.personId = personId;
 	}
 
-	public int getPlanId() {
+	public Integer getPlanId() {
 		return planId;
 	}
 
-	public void setPlanId(int planId) {
+	public void setPlanId(Integer planId) {
 		this.planId = planId;
 	}
 
@@ -268,6 +248,22 @@ public class Subscriber extends Person {
 
 	public void setDateOfLastD4910(LocalDate dateOfLastD4910) {
 		this.dateOfLastD4910 = dateOfLastD4910;
+	}
+	
+	public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
 	}
 
 	@Override

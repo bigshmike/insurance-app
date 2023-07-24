@@ -11,8 +11,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "dependent")
-public class Dependent extends Person {
+@Table(name = "dependents")
+public class Dependent  {
 	
     @Id
     @Column(name = "subscriber_id")
@@ -74,7 +74,7 @@ public class Dependent extends Person {
     private Person person;
     
     @ManyToOne
-    @JoinColumn(name = "subscriber_id")
+    @JoinColumn(name = "subscriber_id", insertable=false, updatable=false)
     private Subscriber subscriber;
 	
 	public Dependent() {
@@ -90,17 +90,7 @@ public class Dependent extends Person {
 		setEffectiveDate(effectiveDate);
 		setTerminatedDate(terminatedDate);
 	}
-	
-	public Dependent(int ssn, String firstName, String lastName, LocalDate dob, char sex, String gender,
-	        int subscriberId, String insuranceCompany, String email,
-	        LocalDate effectiveDate, LocalDate terminatedDate) {
-	    super(ssn, firstName, lastName, dob, sex, gender);
-		setSubscriberId(subscriberId);
-		setInsuranceCompany(insuranceCompany);
-		setEmail(email);
-		setEffectiveDate(effectiveDate);
-		setTerminatedDate(terminatedDate);
-	}
+
 
 	public int getSubscriberId() {
 		return subscriberId;
