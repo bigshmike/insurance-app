@@ -22,9 +22,6 @@ public class Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
-    @Column(name = "insurance_company")
-    private int insuranceCompanyId;
 
     @Column(name = "group_number") //
     private String groupNumber;
@@ -226,16 +223,16 @@ public class Plan {
     
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
     private List<Subscriber> subscribers;
-    
+
     @ManyToOne
-    @JoinColumn(name = "insurance_company_id")
+    @JoinColumn(name = "insurance_company")
     private InsuranceCompany insuranceCompany;
 	
 	public Plan() {
 		
 	}
 
-	public Plan(int id, int insuranceCompanyId, String groupNumber, String groupName, double annualMaximum, double individualDeductible,
+	public Plan(int id, InsuranceCompany insuranceCompany, String groupNumber, String groupName, double annualMaximum, double individualDeductible,
 	        double familyDeductible, char deductibleAppliesToPreventive, char deductibleAppliesToBasic,
 	        char deductibleAppliesToMajor, String orthoMaximumCoverage, int orthoAgeLimit,
 	        int preventiveCoveragePercentage, int basicCoveragePercentage, int majorCoveragePercentage,
@@ -258,7 +255,7 @@ public class Plan {
 	        char missingToothClause, int waitingPeriodPreventiveMonths, int waitingPeriodBasicMonths,
 	        int waitingPeriodMajorMonths, String d4341Frequency, String d4342Frequency) {
 	    setId(id);
-	    setInsuranceCompanyId(insuranceCompanyId);
+	    setInsuranceCompany(insuranceCompany);
 	    setGroupNumber(groupNumber);
 	    setGroupName(groupName);
 	    setAnnualMaximum(annualMaximum);
@@ -333,14 +330,6 @@ public class Plan {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getInsuranceCompanyId() {
-		return insuranceCompanyId;
-	}
-
-	public void setInsuranceCompanyId(int insuranceCompanyId) {
-		this.insuranceCompanyId = insuranceCompanyId;
 	}
 
 	public String getGroupNumber() {
@@ -899,13 +888,14 @@ public class Plan {
 				d9944CoverageForBruxismOnly, d9944CoveragePercentage, d9944Frequency, deductibleAppliesToBasic,
 				deductibleAppliesToMajor, deductibleAppliesToPreventive, endoBasicOrMajor, extractionCoveragePercentage,
 				familyDeductible, fixedProstheticFrequency, groupName, groupNumber, id, implantsCoveragePercentage,
-				individualDeductible, insuranceCompanyId, majorCoveragePercentage, missingToothClause, orthoAgeLimit,
+				individualDeductible, insuranceCompany, majorCoveragePercentage, missingToothClause, orthoAgeLimit,
 				orthoMaximumCoverage, perioBasicOrMajor, posteriorCompositesDowngraded, preventiveCoveragePercentage,
 				removableProstheticFrequency, sealantsCoveragePercentage, sealantsCoveragePermanentFirstMolars,
 				sealantsCoveragePermanentIncisors, sealantsCoveragePermanentPremolars,
 				sealantsCoveragePermanentSecondMolars, sealantsCoveragePermanentThirdMolars,
 				sealantsCoveragePrimaryIncisors, sealantsCoveragePrimaryMolars, sealantsFrequency, sealantsThroughAge,
-				usualCustomaryRates, waitingPeriodBasicMonths, waitingPeriodMajorMonths, waitingPeriodPreventiveMonths);
+				subscribers, usualCustomaryRates, waitingPeriodBasicMonths, waitingPeriodMajorMonths,
+				waitingPeriodPreventiveMonths);
 	}
 
 	@Override
@@ -959,13 +949,13 @@ public class Plan {
 				&& Objects.equals(groupName, other.groupName) && Objects.equals(groupNumber, other.groupNumber)
 				&& id == other.id && implantsCoveragePercentage == other.implantsCoveragePercentage
 				&& Double.doubleToLongBits(individualDeductible) == Double.doubleToLongBits(other.individualDeductible)
-				&& insuranceCompanyId == other.insuranceCompanyId
+				&& Objects.equals(insuranceCompany, other.insuranceCompany)
 				&& majorCoveragePercentage == other.majorCoveragePercentage
 				&& missingToothClause == other.missingToothClause && orthoAgeLimit == other.orthoAgeLimit
 				&& Objects.equals(orthoMaximumCoverage, other.orthoMaximumCoverage)
 				&& perioBasicOrMajor == other.perioBasicOrMajor
 				&& posteriorCompositesDowngraded == other.posteriorCompositesDowngraded
-				&& preventiveCoveragePercentage == other.preventiveCoveragePercentage
+				&& Objects.equals(preventiveCoveragePercentage, other.preventiveCoveragePercentage)
 				&& Objects.equals(removableProstheticFrequency, other.removableProstheticFrequency)
 				&& sealantsCoveragePercentage == other.sealantsCoveragePercentage
 				&& sealantsCoveragePermanentFirstMolars == other.sealantsCoveragePermanentFirstMolars
@@ -976,7 +966,7 @@ public class Plan {
 				&& sealantsCoveragePrimaryIncisors == other.sealantsCoveragePrimaryIncisors
 				&& sealantsCoveragePrimaryMolars == other.sealantsCoveragePrimaryMolars
 				&& Objects.equals(sealantsFrequency, other.sealantsFrequency)
-				&& sealantsThroughAge == other.sealantsThroughAge
+				&& sealantsThroughAge == other.sealantsThroughAge && Objects.equals(subscribers, other.subscribers)
 				&& Objects.equals(usualCustomaryRates, other.usualCustomaryRates)
 				&& waitingPeriodBasicMonths == other.waitingPeriodBasicMonths
 				&& waitingPeriodMajorMonths == other.waitingPeriodMajorMonths
@@ -985,22 +975,22 @@ public class Plan {
 
 	@Override
 	public String toString() {
-		return "Plan [id=" + id + ", insuranceCompany=" + insuranceCompanyId + ", groupNumber=" + groupNumber
-				+ ", groupName=" + groupName + ", annualMaximum=" + annualMaximum + ", individualDeductible="
-				+ individualDeductible + ", familyDeductible=" + familyDeductible + ", deductibleAppliesToPreventive="
-				+ deductibleAppliesToPreventive + ", deductibleAppliesToBasic=" + deductibleAppliesToBasic
-				+ ", deductibleAppliesToMajor=" + deductibleAppliesToMajor + ", orthoMaximumCoverage="
-				+ orthoMaximumCoverage + ", orthoAgeLimit=" + orthoAgeLimit + ", preventiveCoveragePercentage="
-				+ preventiveCoveragePercentage + ", basicCoveragePercentage=" + basicCoveragePercentage
-				+ ", majorCoveragePercentage=" + majorCoveragePercentage + ", extractionCoveragePercentage="
-				+ extractionCoveragePercentage + ", crownsBasicOrMajor=" + crownsBasicOrMajor + ", perioBasicOrMajor="
-				+ perioBasicOrMajor + ", endoBasicOrMajor=" + endoBasicOrMajor + ", d0220BasicOrPreventive="
-				+ d0220BasicOrPreventive + ", d9110BasicOrPreventive=" + d9110BasicOrPreventive
-				+ ", d4381CoveragePercentage=" + d4381CoveragePercentage + ", implantsCoveragePercentage="
-				+ implantsCoveragePercentage + ", d6058CoveragePercentage=" + d6058CoveragePercentage
-				+ ", d0366CoveragePercentage=" + d0366CoveragePercentage + ", sealantsCoveragePercentage="
-				+ sealantsCoveragePercentage + ", sealantsThroughAge=" + sealantsThroughAge + ", sealantsFrequency="
-				+ sealantsFrequency + ", sealantsCoveragePrimaryIncisors=" + sealantsCoveragePrimaryIncisors
+		return "Plan [id=" + id + ", groupNumber=" + groupNumber + ", groupName=" + groupName + ", annualMaximum="
+				+ annualMaximum + ", individualDeductible=" + individualDeductible + ", familyDeductible="
+				+ familyDeductible + ", deductibleAppliesToPreventive=" + deductibleAppliesToPreventive
+				+ ", deductibleAppliesToBasic=" + deductibleAppliesToBasic + ", deductibleAppliesToMajor="
+				+ deductibleAppliesToMajor + ", orthoMaximumCoverage=" + orthoMaximumCoverage + ", orthoAgeLimit="
+				+ orthoAgeLimit + ", preventiveCoveragePercentage=" + preventiveCoveragePercentage
+				+ ", basicCoveragePercentage=" + basicCoveragePercentage + ", majorCoveragePercentage="
+				+ majorCoveragePercentage + ", extractionCoveragePercentage=" + extractionCoveragePercentage
+				+ ", crownsBasicOrMajor=" + crownsBasicOrMajor + ", perioBasicOrMajor=" + perioBasicOrMajor
+				+ ", endoBasicOrMajor=" + endoBasicOrMajor + ", d0220BasicOrPreventive=" + d0220BasicOrPreventive
+				+ ", d9110BasicOrPreventive=" + d9110BasicOrPreventive + ", d4381CoveragePercentage="
+				+ d4381CoveragePercentage + ", implantsCoveragePercentage=" + implantsCoveragePercentage
+				+ ", d6058CoveragePercentage=" + d6058CoveragePercentage + ", d0366CoveragePercentage="
+				+ d0366CoveragePercentage + ", sealantsCoveragePercentage=" + sealantsCoveragePercentage
+				+ ", sealantsThroughAge=" + sealantsThroughAge + ", sealantsFrequency=" + sealantsFrequency
+				+ ", sealantsCoveragePrimaryIncisors=" + sealantsCoveragePrimaryIncisors
 				+ ", sealantsCoveragePrimaryMolars=" + sealantsCoveragePrimaryMolars
 				+ ", sealantsCoveragePermanentIncisors=" + sealantsCoveragePermanentIncisors
 				+ ", sealantsCoveragePermanentPremolars=" + sealantsCoveragePermanentPremolars
@@ -1025,7 +1015,8 @@ public class Plan {
 				+ usualCustomaryRates + ", missingToothClause=" + missingToothClause
 				+ ", waitingPeriodPreventiveMonths=" + waitingPeriodPreventiveMonths + ", waitingPeriodBasicMonths="
 				+ waitingPeriodBasicMonths + ", waitingPeriodMajorMonths=" + waitingPeriodMajorMonths
-				+ ", d4341Frequency=" + d4341Frequency + ", d4342Frequency=" + d4342Frequency + "]";
+				+ ", d4341Frequency=" + d4341Frequency + ", d4342Frequency=" + d4342Frequency + ", subscribers="
+				+ subscribers + ", insuranceCompany=" + insuranceCompany + "]";
 	}
 	
 

@@ -52,6 +52,14 @@ public class InsuranceCompany {
 		this.name = name;
 	}
 
+	public List<Plan> getPlans() {
+		return plans;
+	}
+
+	public void setPlans(List<Plan> plans) {
+		this.plans = plans;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name);

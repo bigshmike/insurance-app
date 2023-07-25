@@ -36,8 +36,9 @@
 							<h5 class="card-header">Plan</h5>
 							<div class="card-body">
 								<p class="card-text">
-									Group Number: ${subscriber.plan.groupNumber } <br>Group
-									Name: ${subscriber.plan.groupName }
+									Group Number: ${subscriber.plan.groupNumber }
+									<br>Group Name: ${subscriber.plan.groupName }
+									<br>Insurance Company: ${subscriber.plan.insuranceCompany.name }
 									<br><a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="${pageContext.request.contextPath}/plan/${subscriber.plan.id}" target="_blank">Plan Info</a> 
 								</p>
 							</div>
@@ -48,8 +49,8 @@
 							<h5 class="card-header">Benefits</h5>
 							<div class="card-body">
 								<p class="card-text">
-									Maximum Benefits: ${subscriber.plan.annualMaximum } <br>Benefits
-									Remaining:
+									Maximum Benefits: ${subscriber.plan.annualMaximum }
+									<br>Benefits Remaining: ${subscriber.benefitsUsed }
 								</p>
 							</div>
 						</div>
@@ -149,12 +150,14 @@
 											test="${empty subscriber.dateOfLastD4910}">
 											<span class="badge text-bg-secondary">NO HISTORY</span>
 										</c:if> <span class="badge text-bg-info">${subscriber.dateOfLastD4910 }</span></td>
+										<td></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
+			<p class="text-center"><a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="${pageContext.request.contextPath}/">New Search</a></p>
 		</div>
 	</c:forEach>
 </body>

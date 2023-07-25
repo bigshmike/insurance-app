@@ -18,85 +18,87 @@ import jakarta.persistence.Table;
 public class Subscriber {
 
 	@Id
-    @Column(name = "subscriber_id")
-    private int subscriberId;
+	@Column(name = "subscriber_id")
+	private int subscriberId;
 
-    @Column(name = "email")
-    private String email;
+	@Column(name = "email")
+	private String email;
 
-    @Column(name = "effective_date")
-    private LocalDate effectiveDate;
+	@Column(name = "effective_date")
+	private LocalDate effectiveDate;
 
-    @Column(name = "terminated_date")
-    private LocalDate terminatedDate;
+	@Column(name = "terminated_date")
+	private LocalDate terminatedDate;
 
-    @Column(name = "person_id")
-    private int personId;
+	@Column(name = "person_id")
+	private int personId;
 
-    @Column(name = "plan_id")
-    private Integer planId;
+	@Column(name = "plan_id")
+	private Integer planId;
 
-    @Column(name = "date_of_last_d0120")
-    private LocalDate dateOfLastD0120;
+	@Column(name = "date_of_last_d0120")
+	private LocalDate dateOfLastD0120;
 
-    @Column(name = "date_of_last_d0140")
-    private LocalDate dateOfLastD0140;
+	@Column(name = "date_of_last_d0140")
+	private LocalDate dateOfLastD0140;
 
-    @Column(name = "date_of_last_d0150")
-    private LocalDate dateOfLastD0150;
+	@Column(name = "date_of_last_d0150")
+	private LocalDate dateOfLastD0150;
 
-    @Column(name = "date_of_last_d0180")
-    private LocalDate dateOfLastD0180;
+	@Column(name = "date_of_last_d0180")
+	private LocalDate dateOfLastD0180;
 
-    @Column(name = "date_of_last_d0210")
-    private LocalDate dateOfLastD0210;
+	@Column(name = "date_of_last_d0210")
+	private LocalDate dateOfLastD0210;
 
-    @Column(name = "date_of_last_d0272")
-    private LocalDate dateOfLastD0272;
+	@Column(name = "date_of_last_d0272")
+	private LocalDate dateOfLastD0272;
 
-    @Column(name = "date_of_last_d0274")
-    private LocalDate dateOfLastD0274;
+	@Column(name = "date_of_last_d0274")
+	private LocalDate dateOfLastD0274;
 
-    @Column(name = "date_of_last_d0330")
-    private LocalDate dateOfLastD0330;
+	@Column(name = "date_of_last_d0330")
+	private LocalDate dateOfLastD0330;
 
-    @Column(name = "date_of_last_d1110")
-    private LocalDate dateOfLastD1110;
+	@Column(name = "date_of_last_d1110")
+	private LocalDate dateOfLastD1110;
 
-    @Column(name = "date_of_last_d1120")
-    private LocalDate dateOfLastD1120;
+	@Column(name = "date_of_last_d1120")
+	private LocalDate dateOfLastD1120;
 
-    @Column(name = "date_of_last_d4341")
-    private LocalDate dateOfLastD4341;
+	@Column(name = "date_of_last_d4341")
+	private LocalDate dateOfLastD4341;
 
-    @Column(name = "date_of_last_d4342")
-    private LocalDate dateOfLastD4342;
+	@Column(name = "date_of_last_d4342")
+	private LocalDate dateOfLastD4342;
 
-    @Column(name = "date_of_last_d4910")
-    private LocalDate dateOfLastD4910;
-    
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id", insertable=false, updatable=false)
-    private Person person;
-    
-    @ManyToOne
-    @JoinColumn(name = "plan_id", insertable=false, updatable=false)
-    private Plan plan;
-	
+	@Column(name = "date_of_last_d4910")
+	private LocalDate dateOfLastD4910;
+
+	@Column(name = "benefits_used")
+	private Double benefitsUsed;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "person_id", insertable = false, updatable = false)
+	private Person person;
+
+	@ManyToOne
+	@JoinColumn(name = "plan_id", insertable = false, updatable = false)
+	private Plan plan;
+
 	// default
 	public Subscriber() {
 		super();
 	}
 
 	// constructor without call to super
-	public Subscriber(int subscriberId, String email,
-			LocalDate effectiveDate, LocalDate terminatedDate, int personId, int planId) {
+	public Subscriber(int subscriberId, String email, LocalDate effectiveDate, LocalDate terminatedDate, int personId,
+			int planId) {
 		setSubscriberId(subscriberId);
 		setEmail(email);
 		setEffectiveDate(effectiveDate);
 		setTerminatedDate(terminatedDate);
 	}
-	
 
 	public int getSubscriberId() {
 		return subscriberId;
@@ -249,14 +251,22 @@ public class Subscriber {
 	public void setDateOfLastD4910(LocalDate dateOfLastD4910) {
 		this.dateOfLastD4910 = dateOfLastD4910;
 	}
-	
-	public Person getPerson() {
-        return person;
-    }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+	public Double getBenefitsUsed() {
+		return benefitsUsed;
+	}
+
+	public void setBenefitsUsed(Double benefitsUsed) {
+		this.benefitsUsed = benefitsUsed;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
 	public Plan getPlan() {
 		return plan;
@@ -268,25 +278,23 @@ public class Subscriber {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180,
+		return Objects.hash(benefitsUsed, dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180,
 				dateOfLastD0210, dateOfLastD0272, dateOfLastD0274, dateOfLastD0330, dateOfLastD1110, dateOfLastD1120,
-				dateOfLastD4341, dateOfLastD4342, dateOfLastD4910, effectiveDate, email, personId, planId, subscriberId,
-				terminatedDate);
-		return result;
+				dateOfLastD4341, dateOfLastD4342, dateOfLastD4910, effectiveDate, email, person, personId, plan, planId,
+				subscriberId, terminatedDate);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Subscriber other = (Subscriber) obj;
-		return Objects.equals(dateOfLastD0120, other.dateOfLastD0120)
+		return Double.doubleToLongBits(benefitsUsed) == Double.doubleToLongBits(other.benefitsUsed)
+				&& Objects.equals(dateOfLastD0120, other.dateOfLastD0120)
 				&& Objects.equals(dateOfLastD0140, other.dateOfLastD0140)
 				&& Objects.equals(dateOfLastD0150, other.dateOfLastD0150)
 				&& Objects.equals(dateOfLastD0180, other.dateOfLastD0180)
@@ -300,20 +308,21 @@ public class Subscriber {
 				&& Objects.equals(dateOfLastD4342, other.dateOfLastD4342)
 				&& Objects.equals(dateOfLastD4910, other.dateOfLastD4910)
 				&& Objects.equals(effectiveDate, other.effectiveDate) && Objects.equals(email, other.email)
-				&& personId == other.personId && planId == other.planId && subscriberId == other.subscriberId
-				&& Objects.equals(terminatedDate, other.terminatedDate);
+				&& Objects.equals(person, other.person) && personId == other.personId
+				&& Objects.equals(plan, other.plan) && Objects.equals(planId, other.planId)
+				&& subscriberId == other.subscriberId && Objects.equals(terminatedDate, other.terminatedDate);
 	}
 
 	@Override
 	public String toString() {
-		return "Subscriber [subscriberId=" + subscriberId + ", email=" + email + ", effectiveDate=" + effectiveDate
-				+ ", terminatedDate=" + terminatedDate + ", personId=" + personId + ", planId=" + planId
+		return "Subscriber{" + "subscriberId=" + subscriberId + ", email='" + email + '\'' + ", effectiveDate="
+				+ effectiveDate + ", terminatedDate=" + terminatedDate + ", personId=" + personId + ", planId=" + planId
 				+ ", dateOfLastD0120=" + dateOfLastD0120 + ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150="
 				+ dateOfLastD0150 + ", dateOfLastD0180=" + dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210
 				+ ", dateOfLastD0272=" + dateOfLastD0272 + ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330="
 				+ dateOfLastD0330 + ", dateOfLastD1110=" + dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120
 				+ ", dateOfLastD4341=" + dateOfLastD4341 + ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910="
-				+ dateOfLastD4910 + "]";
+				+ dateOfLastD4910 + ", benefitsUsed=" + benefitsUsed + '}';
 	}
-	
+
 }

@@ -12,85 +12,82 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "dependents")
-public class Dependent  {
-	
-    @Id
-    @Column(name = "subscriber_id")
+public class Dependent {
+	@Id
+	@Column(name = "subscriber_id")
 	private int subscriberId;
-    
-    @Column(name = "insurance_company")
-    private String insuranceCompany;
 
-    @Column(name = "email")
-    private String email;
+	@Column(name = "email")
+	private String email;
 
-    @Column(name = "effective_date")
-    private LocalDate effectiveDate;
+	@Column(name = "effective_date")
+	private LocalDate effectiveDate;
 
-    @Column(name = "terminated_date")
-    private LocalDate terminatedDate;
+	@Column(name = "terminated_date")
+	private LocalDate terminatedDate;
 
-    @Column(name = "date_of_last_d0120")
-    private LocalDate dateOfLastD0120;
+	@Column(name = "date_of_last_d0120")
+	private LocalDate dateOfLastD0120;
 
-    @Column(name = "date_of_last_d0140")
-    private LocalDate dateOfLastD0140;
+	@Column(name = "date_of_last_d0140")
+	private LocalDate dateOfLastD0140;
 
-    @Column(name = "date_of_last_d0150")
-    private LocalDate dateOfLastD0150;
+	@Column(name = "date_of_last_d0150")
+	private LocalDate dateOfLastD0150;
 
-    @Column(name = "date_of_last_d0180")
-    private LocalDate dateOfLastD0180;
+	@Column(name = "date_of_last_d0180")
+	private LocalDate dateOfLastD0180;
 
-    @Column(name = "date_of_last_d0210")
-    private LocalDate dateOfLastD0210;
+	@Column(name = "date_of_last_d0210")
+	private LocalDate dateOfLastD0210;
 
-    @Column(name = "date_of_last_d0272")
-    private LocalDate dateOfLastD0272;
+	@Column(name = "date_of_last_d0272")
+	private LocalDate dateOfLastD0272;
 
-    @Column(name = "date_of_last_d0274")
-    private LocalDate dateOfLastD0274;
+	@Column(name = "date_of_last_d0274")
+	private LocalDate dateOfLastD0274;
 
-    @Column(name = "date_of_last_d0330")
-    private LocalDate dateOfLastD0330;
+	@Column(name = "date_of_last_d0330")
+	private LocalDate dateOfLastD0330;
 
-    @Column(name = "date_of_last_d1110")
-    private LocalDate dateOfLastD1110;
+	@Column(name = "date_of_last_d1110")
+	private LocalDate dateOfLastD1110;
 
-    @Column(name = "date_of_last_d1120")
-    private LocalDate dateOfLastD1120;
+	@Column(name = "date_of_last_d1120")
+	private LocalDate dateOfLastD1120;
 
-    @Column(name = "date_of_last_d4341")
-    private LocalDate dateOfLastD4341;
+	@Column(name = "date_of_last_d4341")
+	private LocalDate dateOfLastD4341;
 
-    @Column(name = "date_of_last_d4342")
-    private LocalDate dateOfLastD4342;
+	@Column(name = "date_of_last_d4342")
+	private LocalDate dateOfLastD4342;
 
-    @Column(name = "date_of_last_d4910")
-    private LocalDate dateOfLastD4910;
-    
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
-    
-    @ManyToOne
-    @JoinColumn(name = "subscriber_id", insertable=false, updatable=false)
-    private Subscriber subscriber;
-	
+	@Column(name = "date_of_last_d4910")
+	private LocalDate dateOfLastD4910;
+
+	@Column(name = "benefits_used")
+	private Double benefitsUsed;
+
+	@ManyToOne
+	@JoinColumn(name = "person_id")
+	private Person person;
+
+	@ManyToOne
+	@JoinColumn(name = "subscriber_id", insertable = false, updatable = false)
+	private Subscriber subscriber;
+
 	public Dependent() {
 		super();
 	}
 
-	public Dependent(int subscriberId, String insuranceCompany, String email,
+	public Dependent(Subscriber subscriber, String email,
 			LocalDate effectiveDate, LocalDate terminatedDate) {
 		super();
-		setSubscriberId(subscriberId);
-		setInsuranceCompany(insuranceCompany);
+		setSubscriber(subscriber);
 		setEmail(email);
 		setEffectiveDate(effectiveDate);
 		setTerminatedDate(terminatedDate);
 	}
-
 
 	public int getSubscriberId() {
 		return subscriberId;
@@ -98,14 +95,6 @@ public class Dependent  {
 
 	public void setSubscriberId(int subscriberId) {
 		this.subscriberId = subscriberId;
-	}
-
-	public String getInsuranceCompany() {
-		return insuranceCompany;
-	}
-
-	public void setInsuranceCompany(String insuranceCompany) {
-		this.insuranceCompany = insuranceCompany;
 	}
 
 	public String getEmail() {
@@ -236,22 +225,42 @@ public class Dependent  {
 		this.dateOfLastD4910 = dateOfLastD4910;
 	}
 
+	public Double getBenefitsUsed() {
+		return benefitsUsed;
+	}
+
+	public void setBenefitsUsed(Double benefitsUsed) {
+		this.benefitsUsed = benefitsUsed;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Subscriber getSubscriber() {
+		return subscriber;
+	}
+
+	public void setSubscriber(Subscriber subscriber) {
+		this.subscriber = subscriber;
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180,
-				dateOfLastD0210, dateOfLastD0272, dateOfLastD0274, dateOfLastD0330, dateOfLastD1110, dateOfLastD1120,
-				dateOfLastD4341, dateOfLastD4342, dateOfLastD4910, effectiveDate, email, insuranceCompany, subscriberId,
-				terminatedDate);
-		return result;
+		return Objects.hash(dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180, dateOfLastD0210,
+				dateOfLastD0272, dateOfLastD0274, dateOfLastD0330, dateOfLastD1110, dateOfLastD1120, dateOfLastD4341,
+				dateOfLastD4342, dateOfLastD4910, effectiveDate, email, person, subscriber, terminatedDate);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -270,20 +279,19 @@ public class Dependent  {
 				&& Objects.equals(dateOfLastD4342, other.dateOfLastD4342)
 				&& Objects.equals(dateOfLastD4910, other.dateOfLastD4910)
 				&& Objects.equals(effectiveDate, other.effectiveDate) && Objects.equals(email, other.email)
-				&& Objects.equals(insuranceCompany, other.insuranceCompany) && subscriberId == other.subscriberId
+				&& Objects.equals(person, other.person) && Objects.equals(subscriber, other.subscriber)
 				&& Objects.equals(terminatedDate, other.terminatedDate);
 	}
 
 	@Override
 	public String toString() {
-		return "Dependent [subscriberId=" + subscriberId + ", insuranceCompany=" + insuranceCompany + ", email=" + email
-				+ ", effectiveDate=" + effectiveDate + ", terminatedDate=" + terminatedDate + ", dateOfLastD0120="
-				+ dateOfLastD0120 + ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150=" + dateOfLastD0150
-				+ ", dateOfLastD0180=" + dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210 + ", dateOfLastD0272="
-				+ dateOfLastD0272 + ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330=" + dateOfLastD0330
-				+ ", dateOfLastD1110=" + dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120 + ", dateOfLastD4341="
-				+ dateOfLastD4341 + ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910=" + dateOfLastD4910
-				+ "]";
+		return "Dependent [email=" + email + ", effectiveDate=" + effectiveDate + ", terminatedDate=" + terminatedDate
+				+ ", dateOfLastD0120=" + dateOfLastD0120 + ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150="
+				+ dateOfLastD0150 + ", dateOfLastD0180=" + dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210
+				+ ", dateOfLastD0272=" + dateOfLastD0272 + ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330="
+				+ dateOfLastD0330 + ", dateOfLastD1110=" + dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120
+				+ ", dateOfLastD4341=" + dateOfLastD4341 + ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910="
+				+ dateOfLastD4910 + ", person=" + person + ", subscriber=" + subscriber + "]";
 	}
-	
+
 }
