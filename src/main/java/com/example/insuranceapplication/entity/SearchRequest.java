@@ -2,7 +2,7 @@ package com.example.insuranceapplication.entity;
 
 public class SearchRequest {
     private String searchType;
-    private Integer inputText; // Change the data type from int to Integer
+    private Integer inputText; 
     
     public SearchRequest() {
         
@@ -16,11 +16,11 @@ public class SearchRequest {
         this.searchType = searchType;
     }
 
-    public Integer getInputText() { // Change the return type from int to Integer
+    public Integer getInputText() { 
         return inputText;
     }
 
-    public void setInputText(Integer inputText) { // Change the data type from int to Integer
+    public void setInputText(Integer inputText) { 
         this.inputText = inputText;
     }
 

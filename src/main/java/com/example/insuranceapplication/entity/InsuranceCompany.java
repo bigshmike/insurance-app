@@ -62,7 +62,7 @@ public class InsuranceCompany {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(id, name, plans);
 	}
 
 	@Override
@@ -74,12 +74,12 @@ public class InsuranceCompany {
 		if (getClass() != obj.getClass())
 			return false;
 		InsuranceCompany other = (InsuranceCompany) obj;
-		return id == other.id && Objects.equals(name, other.name);
+		return id == other.id && Objects.equals(name, other.name) && Objects.equals(plans, other.plans);
 	}
 
 	@Override
 	public String toString() {
-		return "InsuranceCompany [id=" + id + ", name=" + name + "]";
+		return "InsuranceCompany [id=" + id + ", name=" + name + ", plans=" + plans + "]";
 	}
 
 }

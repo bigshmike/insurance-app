@@ -86,18 +86,45 @@ public class Subscriber {
 	@JoinColumn(name = "plan_id", insertable = false, updatable = false)
 	private Plan plan;
 
-	// default
 	public Subscriber() {
 		super();
 	}
 
-	// constructor without call to super
 	public Subscriber(int subscriberId, String email, LocalDate effectiveDate, LocalDate terminatedDate, int personId,
 			int planId) {
 		setSubscriberId(subscriberId);
 		setEmail(email);
 		setEffectiveDate(effectiveDate);
 		setTerminatedDate(terminatedDate);
+	}
+
+	public Subscriber(int subscriberId, String email, LocalDate effectiveDate, LocalDate terminatedDate, int personId,
+			Integer planId, LocalDate dateOfLastD0120, LocalDate dateOfLastD0140, LocalDate dateOfLastD0150,
+			LocalDate dateOfLastD0180, LocalDate dateOfLastD0210, LocalDate dateOfLastD0272, LocalDate dateOfLastD0274,
+			LocalDate dateOfLastD0330, LocalDate dateOfLastD1110, LocalDate dateOfLastD1120, LocalDate dateOfLastD4341,
+			LocalDate dateOfLastD4342, LocalDate dateOfLastD4910, Double benefitsUsed, Person person, Plan plan) {
+		setSubscriberId(subscriberId);
+		setEmail(email);
+		setEffectiveDate(effectiveDate);
+		setTerminatedDate(terminatedDate);
+		setPersonId(personId);
+		setPlanId(planId);
+		setDateOfLastD0120(dateOfLastD0120);
+		setDateOfLastD0140(dateOfLastD0140);
+		setDateOfLastD0150(dateOfLastD0150);
+		setDateOfLastD0180(dateOfLastD0180);
+		setDateOfLastD0210(dateOfLastD0210);
+		setDateOfLastD0272(dateOfLastD0272);
+		setDateOfLastD0274(dateOfLastD0274);
+		setDateOfLastD0330(dateOfLastD0330);
+		setDateOfLastD1110(dateOfLastD1110);
+		setDateOfLastD1120(dateOfLastD1120);
+		setDateOfLastD4341(dateOfLastD4341);
+		setDateOfLastD4342(dateOfLastD4342);
+		setDateOfLastD4910(dateOfLastD4910);
+		setBenefitsUsed(benefitsUsed);
+		setPerson(person);
+		setPlan(plan);
 	}
 
 	public int getSubscriberId() {

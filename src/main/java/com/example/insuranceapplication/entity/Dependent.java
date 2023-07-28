@@ -96,6 +96,41 @@ public class Dependent {
 		setTerminatedDate(terminatedDate);
 	}
 
+	public Dependent(int subscriberId, String email, LocalDate effectiveDate, LocalDate terminatedDate,
+			LocalDate dateOfLastD0120, LocalDate dateOfLastD0140, LocalDate dateOfLastD0150, LocalDate dateOfLastD0180,
+			LocalDate dateOfLastD0210, LocalDate dateOfLastD0272, LocalDate dateOfLastD0274, LocalDate dateOfLastD0330,
+			LocalDate dateOfLastD1110, LocalDate dateOfLastD1120, LocalDate dateOfLastD4341, LocalDate dateOfLastD4342,
+			LocalDate dateOfLastD4910, Double benefitsUsed, Person person, Subscriber subscriber) {
+		setSubscriberId(subscriberId);
+		setEmail(email);
+		setEffectiveDate(effectiveDate);
+		setTerminatedDate(terminatedDate);
+		setDateOfLastD0120(dateOfLastD0120);
+		setDateOfLastD0140(dateOfLastD0140);
+		setDateOfLastD0150(dateOfLastD0150);
+		setDateOfLastD0180(dateOfLastD0180);
+		setDateOfLastD0210(dateOfLastD0210);
+		setDateOfLastD0272(dateOfLastD0272);
+		setDateOfLastD0274(dateOfLastD0274);
+		setDateOfLastD0330(dateOfLastD0330);
+		setDateOfLastD1110(dateOfLastD1110);
+		setDateOfLastD1120(dateOfLastD1120);
+		setDateOfLastD4341(dateOfLastD4341);
+		setDateOfLastD4342(dateOfLastD4342);
+		setDateOfLastD4910(dateOfLastD4910);
+		setBenefitsUsed(benefitsUsed);
+		setPerson(person);
+		setSubscriber(subscriber);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getSubscriberId() {
 		return subscriberId;
 	}
@@ -258,9 +293,10 @@ public class Dependent {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180, dateOfLastD0210,
-				dateOfLastD0272, dateOfLastD0274, dateOfLastD0330, dateOfLastD1110, dateOfLastD1120, dateOfLastD4341,
-				dateOfLastD4342, dateOfLastD4910, effectiveDate, email, person, subscriber, terminatedDate);
+		return Objects.hash(benefitsUsed, dateOfLastD0120, dateOfLastD0140, dateOfLastD0150, dateOfLastD0180,
+				dateOfLastD0210, dateOfLastD0272, dateOfLastD0274, dateOfLastD0330, dateOfLastD1110, dateOfLastD1120,
+				dateOfLastD4341, dateOfLastD4342, dateOfLastD4910, effectiveDate, email, id, person, subscriber,
+				subscriberId, terminatedDate);
 	}
 
 	@Override
@@ -272,7 +308,8 @@ public class Dependent {
 		if (getClass() != obj.getClass())
 			return false;
 		Dependent other = (Dependent) obj;
-		return Objects.equals(dateOfLastD0120, other.dateOfLastD0120)
+		return Objects.equals(benefitsUsed, other.benefitsUsed)
+				&& Objects.equals(dateOfLastD0120, other.dateOfLastD0120)
 				&& Objects.equals(dateOfLastD0140, other.dateOfLastD0140)
 				&& Objects.equals(dateOfLastD0150, other.dateOfLastD0150)
 				&& Objects.equals(dateOfLastD0180, other.dateOfLastD0180)
@@ -286,19 +323,21 @@ public class Dependent {
 				&& Objects.equals(dateOfLastD4342, other.dateOfLastD4342)
 				&& Objects.equals(dateOfLastD4910, other.dateOfLastD4910)
 				&& Objects.equals(effectiveDate, other.effectiveDate) && Objects.equals(email, other.email)
-				&& Objects.equals(person, other.person) && Objects.equals(subscriber, other.subscriber)
+				&& id == other.id && Objects.equals(person, other.person)
+				&& Objects.equals(subscriber, other.subscriber) && subscriberId == other.subscriberId
 				&& Objects.equals(terminatedDate, other.terminatedDate);
 	}
 
 	@Override
 	public String toString() {
-		return "Dependent [email=" + email + ", effectiveDate=" + effectiveDate + ", terminatedDate=" + terminatedDate
-				+ ", dateOfLastD0120=" + dateOfLastD0120 + ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150="
-				+ dateOfLastD0150 + ", dateOfLastD0180=" + dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210
-				+ ", dateOfLastD0272=" + dateOfLastD0272 + ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330="
-				+ dateOfLastD0330 + ", dateOfLastD1110=" + dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120
-				+ ", dateOfLastD4341=" + dateOfLastD4341 + ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910="
-				+ dateOfLastD4910 + ", person=" + person + ", subscriber=" + subscriber + "]";
+		return "Dependent [id=" + id + ", subscriberId=" + subscriberId + ", email=" + email + ", effectiveDate="
+				+ effectiveDate + ", terminatedDate=" + terminatedDate + ", dateOfLastD0120=" + dateOfLastD0120
+				+ ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150=" + dateOfLastD0150 + ", dateOfLastD0180="
+				+ dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210 + ", dateOfLastD0272=" + dateOfLastD0272
+				+ ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330=" + dateOfLastD0330 + ", dateOfLastD1110="
+				+ dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120 + ", dateOfLastD4341=" + dateOfLastD4341
+				+ ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910=" + dateOfLastD4910 + ", benefitsUsed="
+				+ benefitsUsed + ", person=" + person + ", subscriber=" + subscriber + "]";
 	}
 
 }

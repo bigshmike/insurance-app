@@ -25,10 +25,6 @@ public class FileUploadController {
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
-        // TODO: Add code to handle the uploaded file
-        // You can access the file using file.getInputStream()
-
-        // Example: Process JSON file
         if (file.getOriginalFilename().endsWith(".json")) {
             try {
                 InputStream inputStream = file.getInputStream();
@@ -36,7 +32,8 @@ public class FileUploadController {
                 List<Plan> plans = objectMapper.readValue(inputStream, new TypeReference<List<Plan>> () {});
                 planService.savePlans(plans);
                 return ResponseEntity.ok("File uploaded and processed successfully.");
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing JSON file.");
             }
