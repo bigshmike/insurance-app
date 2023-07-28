@@ -11,7 +11,7 @@ import jakarta.persistence.EntityManager;
 
 @Repository
 public class PlanDAOImpl implements PlanDAO {
-	
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -25,10 +25,9 @@ public class PlanDAOImpl implements PlanDAO {
 	public void savePlans(List<Plan> plans) {
 		// TODO Auto-generated method stub
 		for (Plan plan : plans) {
-            entityManager.persist(plan);
-        }
-		
-	}
+			entityManager.persist(plan);
+		}
 
+	}
 
 }

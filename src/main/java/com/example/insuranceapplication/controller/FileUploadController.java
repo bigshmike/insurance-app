@@ -38,6 +38,6 @@ public class FileUploadController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing JSON file.");
             }
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid file format. Supported formats: JSON, Excel.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid file format. Supported formats: JSON");
     }
 }

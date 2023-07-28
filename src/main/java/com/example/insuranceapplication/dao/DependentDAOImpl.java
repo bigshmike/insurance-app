@@ -14,10 +14,9 @@ import jakarta.persistence.TypedQuery;
 
 @Repository
 public class DependentDAOImpl implements DependentDAO {
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
 
 	@Override
 	public List<Dependent> getDependent(SearchRequest searchRequest) {
@@ -26,17 +25,17 @@ public class DependentDAOImpl implements DependentDAO {
 		Integer inputText;
 		String sql = "";
 		TypedQuery<Dependent> query;
-		if (searchType.equals("ssn") ) {
+		if (searchType.equals("ssn")) {
 			String sanitizedInputText = String.valueOf(searchRequest.getInputText()).replaceAll("[^0-9]", "");
 			if (sanitizedInputText.isEmpty()) {
-                return Collections.emptyList(); 
-            }
+				return Collections.emptyList();
+			}
 			inputText = Integer.parseInt(sanitizedInputText);
 			sql = "FROM Dependent d WHERE d.subscriber.person.ssn = :ssn ";
 			query = entityManager.createQuery(sql, Dependent.class);
 			query.setParameter("ssn", inputText);
 			return query.getResultList();
-		}
+		} 
 		else if (searchType.equals("id")) {
 			Integer subscriberId = searchRequest.getInputText();
 			if (subscriberId == null) {
