@@ -34,7 +34,8 @@ public class SearchRequestDAOImpl implements SearchRequestDAO {
 	        query.setParameter("ssn", ssn);
 	        query.setMaxResults(1);
 	        return query.getResultList();
-	    } else if (searchType.equals("id")) {
+	    } 
+	    else if (searchType.equals("id")) {
 	        Integer subscriberId = searchRequest.getInputText();
 	        if (subscriberId == null) {
 	            return Collections.emptyList();
