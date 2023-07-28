@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -55,7 +55,15 @@
 									Name: ${subscriber.person.firstName }
 									${subscriber.person.lastName } <br>DOB:
 									${subscriber.person.dob } <br>Subscriber ID:
-									${subscriber.subscriberId }
+									${subscriber.subscriberId } <br>
+									<c:if
+											test="${not empty subscriber.terminatedDate }">
+											<span class="badge text-bg-danger">INACTIVE: ${subscriber.terminatedDate }</span>
+										</c:if> 
+										<c:if
+											test="${empty subscriber.terminatedDate }">
+											<span class="badge text-bg-success">ACTIVE: ${subscriber.effectiveDate }</span>
+										</c:if> 
 								</p>
 							</div>
 						</div>
@@ -82,9 +90,13 @@
 							<h5 class="card-header">Benefits</h5>
 							<div class="card-body">
 								<p class="card-text">
-								
-									Maximum Benefits:  $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subscriber.plan.annualMaximum }"/>
-									<br>Benefits Remaining: $<c:if test="${empty subscriber.benefitsUsed }">0.00</c:if><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subscriber.benefitsUsed }"/> 
+
+									Maximum Benefits: $<fmt:formatNumber type="number" maxFractionDigits="2"
+										minFractionDigits="2"
+										value="${subscriber.plan.annualMaximum }" />
+									<br>Benefits Remaining: $<c:if test="${empty subscriber.benefitsUsed }">0.00</c:if>
+									<fmt:formatNumber type="number" maxFractionDigits="2"
+										minFractionDigits="2" value="${subscriber.benefitsUsed }" />
 								</p>
 							</div>
 						</div>
