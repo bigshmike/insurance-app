@@ -9,5 +9,5 @@ Real-life data could populate this application and make it into so much more. I 
 
 https://github.com/bigshmike/insurance-app/assets/94321938/5bbddaa0-9b15-4b49-a9f6-0bc47ee57ca0
 
-User Manaul (v1.0):
+User Manual (v1.0):
 [Universal Insurance Look-up.pdf](https://github.com/bigshmike/insurance-app/files/12195076/Universal.Insurance.Look-up.pdf)
