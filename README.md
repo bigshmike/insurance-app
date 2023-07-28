@@ -1,5 +1,5 @@
 # insurance-app
-Demonstration of an application that does not exist but could exist in theory.
+Demonstration of an application that exists in my imagination but could actually exist through collaborative efforts.
 
 Dental offices spend countless hours per week on the phone calling dental insurance companies trying to locate simple benefit coverages so that they can see patients and have accurate billing. This prototype was inspired by a paper form I found at an office, and the office wanted to have the data available in this program at the bare minimum to setup a patient's billing profile. The program is capable of expanding data offered at-a-glance to offices, e.g. more dates of service histories, coverage percentages, etc. or become a full-fledged breakdown of benefits.
 
