@@ -1,5 +1,7 @@
 package com.example.insuranceapplication.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +20,15 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return entityManager.find(Plan.class, id);
 	}
+
+	@Override
+	public void savePlans(List<Plan> plans) {
+		// TODO Auto-generated method stub
+		for (Plan plan : plans) {
+            entityManager.persist(plan);
+        }
+		
+	}
+
 
 }

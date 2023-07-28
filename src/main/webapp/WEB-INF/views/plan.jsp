@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
 			<h3>Maximum & Deductibles</h3>
 			<div class="row">
 				<h5>Maximum</h5>
-				<div class="col-3">Annual Maximum: ${plan.annualMaximum }</div>
+				<div class="col-3">Annual Maximum: $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${plan.annualMaximum }"/></div>
 			</div>
 			<div class="row">
 				<h5>Deductibles</h5>
@@ -41,8 +42,8 @@
 						${plan.deductibleAppliesToMajor }</div>
 				</div>
 				<div class="col-3">Individual Deductible:
-					${plan.individualDeductible }</div>
-				<div class="col-3">Family Deductible: ${plan.familyDeductible }</div>
+					$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${plan.individualDeductible }"/></div>
+				<div class="col-3">Family Deductible: $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${plan.familyDeductible }"/></div>
 			</div>
 			<hr />
 			<h3>Waiting Periods (months)</h3>

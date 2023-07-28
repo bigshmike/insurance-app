@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.insuranceapplication.entity.Dependent;
 import com.example.insuranceapplication.entity.Plan;
 import com.example.insuranceapplication.entity.SearchRequest;
 import com.example.insuranceapplication.entity.Subscriber;
+import com.example.insuranceapplication.service.DependentService;
 import com.example.insuranceapplication.service.PlanService;
 import com.example.insuranceapplication.service.SearchRequestService;
 import com.example.insuranceapplication.service.SubscriberService;
@@ -31,6 +33,9 @@ public class MainController {
 	@Autowired
 	PlanService planService;
 	
+	@Autowired
+	DependentService dependentService;
+	
 	@RequestMapping("/")
 	public ModelAndView search(Model model, RedirectAttributes redirectAttributes) {
 		SearchRequest searchRequest = new SearchRequest();
@@ -46,6 +51,8 @@ public class MainController {
 	public String processSearch(Model model, @ModelAttribute("searchRequest") SearchRequest searchRequest) {
 		List<Subscriber> subscribers = searchRequestService.getSubscribers(searchRequest);
 		model.addAttribute("subscribers", subscribers);
+		List<Dependent> dependents = dependentService.getDependents(searchRequest);
+		model.addAttribute("dependents", dependents);
 		return "search-results";
 	}
 	
