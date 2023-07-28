@@ -8,3 +8,6 @@ Not only do dental offices spend precious time on the phone hunting down benefit
 Real-life data could populate this application and make it into so much more. I envision the real-life application would keep the database current with API calls, but for now, I have allowed plans to be uploaded manually via .JSON files.
 
 https://github.com/bigshmike/insurance-app/assets/94321938/5bbddaa0-9b15-4b49-a9f6-0bc47ee57ca0
+
+User Manaul (v1.0):
+[Universal Insurance Look-up.pdf](https://github.com/bigshmike/insurance-app/files/12195076/Universal.Insurance.Look-up.pdf)
