@@ -1015,8 +1015,7 @@ public class Plan {
 				+ usualCustomaryRates + ", missingToothClause=" + missingToothClause
 				+ ", waitingPeriodPreventiveMonths=" + waitingPeriodPreventiveMonths + ", waitingPeriodBasicMonths="
 				+ waitingPeriodBasicMonths + ", waitingPeriodMajorMonths=" + waitingPeriodMajorMonths
-				+ ", d4341Frequency=" + d4341Frequency + ", d4342Frequency=" + d4342Frequency + ", subscribers="
-				+ subscribers + ", insuranceCompany=" + insuranceCompany + "]";
+				+ ", d4341Frequency=" + d4341Frequency + ", d4342Frequency=" + d4342Frequency + "]";
 	}
 	
 

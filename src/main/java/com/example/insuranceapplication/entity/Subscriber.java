@@ -342,14 +342,14 @@ public class Subscriber {
 
 	@Override
 	public String toString() {
-		return "Subscriber{" + "subscriberId=" + subscriberId + ", email='" + email + '\'' + ", effectiveDate="
-				+ effectiveDate + ", terminatedDate=" + terminatedDate + ", personId=" + personId + ", planId=" + planId
+		return "Subscriber [subscriberId=" + subscriberId + ", email=" + email + ", effectiveDate=" + effectiveDate
+				+ ", terminatedDate=" + terminatedDate + ", personId=" + personId + ", planId=" + planId
 				+ ", dateOfLastD0120=" + dateOfLastD0120 + ", dateOfLastD0140=" + dateOfLastD0140 + ", dateOfLastD0150="
 				+ dateOfLastD0150 + ", dateOfLastD0180=" + dateOfLastD0180 + ", dateOfLastD0210=" + dateOfLastD0210
 				+ ", dateOfLastD0272=" + dateOfLastD0272 + ", dateOfLastD0274=" + dateOfLastD0274 + ", dateOfLastD0330="
 				+ dateOfLastD0330 + ", dateOfLastD1110=" + dateOfLastD1110 + ", dateOfLastD1120=" + dateOfLastD1120
 				+ ", dateOfLastD4341=" + dateOfLastD4341 + ", dateOfLastD4342=" + dateOfLastD4342 + ", dateOfLastD4910="
-				+ dateOfLastD4910 + ", benefitsUsed=" + benefitsUsed + '}';
+				+ dateOfLastD4910 + ", benefitsUsed=" + benefitsUsed + "]";
 	}
 
 }
