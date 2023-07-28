@@ -88,14 +88,6 @@ public class Dependent {
 		super();
 	}
 
-	public Dependent(Subscriber subscriber, String email, LocalDate effectiveDate, LocalDate terminatedDate) {
-		super();
-		setSubscriber(subscriber);
-		setEmail(email);
-		setEffectiveDate(effectiveDate);
-		setTerminatedDate(terminatedDate);
-	}
-
 	public Dependent(int subscriberId, String email, LocalDate effectiveDate, LocalDate terminatedDate,
 			LocalDate dateOfLastD0120, LocalDate dateOfLastD0140, LocalDate dateOfLastD0150, LocalDate dateOfLastD0180,
 			LocalDate dateOfLastD0210, LocalDate dateOfLastD0272, LocalDate dateOfLastD0274, LocalDate dateOfLastD0330,
