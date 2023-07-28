@@ -33,11 +33,11 @@
 			<c:forEach items="${subscribers}" var="subscriber">
 				<!-- Left-most card: Primary Subscriber Info -->
 				<div class="row">
-					<div class="col-md-10 ">
+					<div class="col-md-10 d-flex align-items-center">
 						<h1>Benefits Summary for ${subscriber.person.firstName }
 							${subscriber.person.lastName }</h1>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 d-flex align-items-center">
 						<p class="text-right">
 							<a
 								class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
