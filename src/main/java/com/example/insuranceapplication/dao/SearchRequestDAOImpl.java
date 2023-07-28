@@ -20,31 +20,32 @@ public class SearchRequestDAOImpl implements SearchRequestDAO {
 
 	@Override
 	public List<Subscriber> getSubscribers(SearchRequest searchRequest) {
-		String searchType = searchRequest.getSearchType();
-		Integer inputText;
-		String sql = "";
-		TypedQuery<Subscriber> query;
-		if (searchType.equals("ssn")) {
-			String sanitizedInputText = String.valueOf(searchRequest.getInputText()).replaceAll("[^0-9]", "");
-			if (sanitizedInputText.isEmpty()) {
-				return Collections.emptyList();
-			}
-			inputText = Integer.parseInt(sanitizedInputText);
-			sql = "SELECT s FROM Subscriber s WHERE s.person.ssn = :ssn ";
-			query = entityManager.createQuery(sql, Subscriber.class);
-			query.setParameter("ssn", inputText);
-			return query.getResultList();
-		} 
-		else if (searchType.equals("id")) {
-			Integer subscriberId = searchRequest.getInputText();
-			if (subscriberId == null) {
-				return Collections.emptyList();
-			}
-			sql = "SELECT s FROM Subscriber s WHERE s.subscriberId = :subscriberId ";
-			query = entityManager.createQuery(sql, Subscriber.class);
-			query.setParameter("subscriberId", subscriberId);
-			return query.getResultList();
-		}
-		return null;
+	    String searchType = searchRequest.getSearchType();
+	    String sql = "";
+	    TypedQuery<Subscriber> query;
+
+	    if (searchType.equals("ssn")) {
+	        Integer ssn = searchRequest.getInputText();
+	        if (ssn == null) {
+	            return Collections.emptyList();
+	        }
+	        sql = "SELECT s FROM Subscriber s WHERE s.person.ssn = :ssn ORDER BY s.effectiveDate DESC ";
+	        query = entityManager.createQuery(sql, Subscriber.class);
+	        query.setParameter("ssn", ssn);
+	        query.setMaxResults(1);
+	        return query.getResultList();
+	    } else if (searchType.equals("id")) {
+	        Integer subscriberId = searchRequest.getInputText();
+	        if (subscriberId == null) {
+	            return Collections.emptyList();
+	        }
+	        sql = "SELECT s FROM Subscriber s WHERE s.subscriberId = :subscriberId ORDER BY s.effectiveDate DESC ";
+	        query = entityManager.createQuery(sql, Subscriber.class);
+	        query.setParameter("subscriberId", subscriberId);
+	        query.setMaxResults(1);
+	        return query.getResultList();
+	    }
+	    return null;
 	}
+
 }

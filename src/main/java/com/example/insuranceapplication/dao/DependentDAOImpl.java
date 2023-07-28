@@ -22,18 +22,16 @@ public class DependentDAOImpl implements DependentDAO {
 	public List<Dependent> getDependent(SearchRequest searchRequest) {
 		// TODO Auto-generated method stub
 		String searchType = searchRequest.getSearchType();
-		Integer inputText;
 		String sql = "";
 		TypedQuery<Dependent> query;
 		if (searchType.equals("ssn")) {
-			String sanitizedInputText = String.valueOf(searchRequest.getInputText()).replaceAll("[^0-9]", "");
-			if (sanitizedInputText.isEmpty()) {
+			Integer ssn = searchRequest.getInputText();
+			if (ssn == null) {
 				return Collections.emptyList();
 			}
-			inputText = Integer.parseInt(sanitizedInputText);
 			sql = "FROM Dependent d WHERE d.subscriber.person.ssn = :ssn ";
 			query = entityManager.createQuery(sql, Dependent.class);
-			query.setParameter("ssn", inputText);
+			query.setParameter("ssn", ssn);
 			return query.getResultList();
 		} 
 		else if (searchType.equals("id")) {

@@ -84,7 +84,7 @@
 								<p class="card-text">
 								
 									Maximum Benefits:  $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subscriber.plan.annualMaximum }"/>
-									<br>Benefits Remaining: $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subscriber.benefitsUsed }"/> 
+									<br>Benefits Remaining: $<c:if test="${empty subscriber.benefitsUsed }">0.00</c:if><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subscriber.benefitsUsed }"/> 
 								</p>
 							</div>
 						</div>
