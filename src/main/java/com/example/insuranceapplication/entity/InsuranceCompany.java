@@ -31,7 +31,7 @@ public class InsuranceCompany {
     	
     }
 
-	public InsuranceCompany(int id, String name) {
+	public InsuranceCompany(String name) {
 		setId(id);
 		setName(name);
 	}
